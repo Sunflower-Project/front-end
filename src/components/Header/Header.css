@@ -1,5 +1,11 @@
 header {
-    background-color: #ff9e2c;
+    background-color: #ff880098;
+
+}
+
+.header-title {
+    color: white;
+    font-size: 62px;
 }
 
 div {
