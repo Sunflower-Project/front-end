@@ -1,0 +1,17 @@
+header {
+    background-color: #ff9e2c;
+}
+
+div {
+    flex: 1;
+}
+ul {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+li {
+    display: inline;
+    list-style-type: none;
+}
