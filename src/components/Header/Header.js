@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar.js'
+import Navbars from '../Navbars/Navbars'
 import './Header.css'
 
 const Header = () => {
@@ -11,7 +11,7 @@ const Header = () => {
 						<p className='header-title-p'>"Turning trash into treasure."</p>
 					</span>
 					<nav>
-						<Navbar />
+						<Navbars />
 					</nav>
 				</header>
 			</div>
