@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from '../Navs/Navs.js'
 import Navbars from '../Navbars/Navbars'
 import './Header.css'
 
