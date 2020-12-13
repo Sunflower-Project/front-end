@@ -8,6 +8,7 @@ import Login from './components/Login/Login'
 import Footer from './components/Footer/Footer';
 import './App.css';
 import UserProfile from './components/UserProfile/UserProfile';
+import UpItemDetail from './components/UpItemDetail/UpItemDetail';
 
 const App = () => {
 	return (
@@ -21,6 +22,7 @@ const App = () => {
 				<Route path='/login' component={Login}/>
 				<Route path='/signup' component={SignUp}/>
 				<Route path='/userprofile'component={UserProfile}/>
+				<Route path='/upitemdetail' component={UpItemDetail}/>
 				<Footer />
 			</main>
 		</div>

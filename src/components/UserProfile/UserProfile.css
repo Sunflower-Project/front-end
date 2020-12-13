@@ -34,7 +34,12 @@
 }
 
 .featured-work {
-	background-color: lightyellow;
+    background-color: lightyellow;
+    text-align: center;
+}
+
+.featured-item {
+    background-color: #00000038;
 }
 
 .featured-image {
