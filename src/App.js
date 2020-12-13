@@ -1,7 +1,10 @@
 import React from 'react';
-
+import { Route } from 'react-router-dom'
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Items from './components/Items/Items'
+import SignUp from './components/SignUp/SignUp'
+import Login from './components/Login/Login'
 import Footer from './components/Footer/Footer';
 import './App.css';
 
@@ -12,7 +15,10 @@ const App = () => {
 				<Header />
 			</header>
 			<main>
-				<Home />
+				<Route path='/' exact component={Home}/>
+				<Route path='/browse' component={Items}/>
+				<Route path='/login' component={Login}/>
+				<Route path='/signup' component={SignUp}/>
 				<Footer />
 			</main>
 		</div>

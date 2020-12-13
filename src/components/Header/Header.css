@@ -6,6 +6,15 @@ header {
 .header-title {
     color: white;
     font-size: 62px;
+    display: inline-block;
+}
+
+.header-title-p {
+    font-style: italic;
+    padding-left: 40px;
+    font-size: 25px;
+    display: inline-block;
+    color: white;
 }
 
 div {

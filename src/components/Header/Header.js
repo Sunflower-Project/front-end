@@ -1,22 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Navbar from '../Navbar/Navbar.js'
 import './Header.css'
 
 const Header = () => {
     return (
 			<div>
 				<header>
-					<div>
+					<span>
 						<h1 className='header-title'>Sunflower</h1>
-					</div>
+						<p className='header-title-p'>"Turning trash into treasure."</p>
+					</span>
 					<nav>
-						<ul>
-							<Link to='/about'>
-								<li>About</li>
-							</Link>
-							<li>Categories</li>
-							<li>Get Started</li>
-						</ul>
+						<Navbar />
 					</nav>
 				</header>
 			</div>

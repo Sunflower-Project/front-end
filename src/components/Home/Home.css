@@ -24,6 +24,8 @@ html, body, section {
 
 .left-half {
   /* background-color: #ff9e2c; */
+  color: orange;
+    text-shadow: 0 2px 7px grey;
   flex: 1;
 }
 
