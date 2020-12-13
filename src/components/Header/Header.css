@@ -1,0 +1,32 @@
+header {
+    background-color: #ff880098;
+
+}
+
+.header-title {
+    color: white;
+    font-size: 62px;
+    display: inline-block;
+}
+
+.header-title-p {
+    font-style: italic;
+    padding-left: 40px;
+    font-size: 25px;
+    display: inline-block;
+    color: white;
+}
+
+div {
+    flex: 1;
+}
+ul {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+li {
+    display: inline;
+    list-style-type: none;
+}
