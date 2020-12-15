@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './UserProfile.css';
 
 const UserProfile = () => {
@@ -13,7 +14,7 @@ const UserProfile = () => {
 						<h3>Bio</h3>
 						<p>This is my bio. Sunflower is really awesome!</p>
 						<div>
-                            <h3>Contact Me</h3>
+							<h3>Contact Me</h3>
 							{/* Use this block for contact info... Icons: FB, Twitter, LinkedIn, Pintrest, etc. */}
 						</div>
 					</div>
@@ -28,14 +29,17 @@ const UserProfile = () => {
 				</div>
 			</div>
 			<div className='featured-work'>
-				<h2>Featured Work</h2>
+				<h2>Featured Work (Upcycled)</h2>
 				<div className='image-grid'>
-					<div>
-						<img
-							className='featured-image'
-							src='item-test-images/pexels-element-digital-1125136.jpg'
-							alt=''
-						/>
+					<div className='featured-item'>
+						<Link to='/upitemdetail'>
+							<img
+								className='featured-image'
+								src='item-test-images/pexels-element-digital-1125136.jpg'
+								alt=''
+							/>
+                            <h4 className='item-name'>Blanket Ladder</h4>
+						</Link>
 					</div>
 					<div>
 						<img

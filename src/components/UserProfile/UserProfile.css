@@ -34,7 +34,12 @@
 }
 
 .featured-work {
-	background-color: lightyellow;
+    background-color: lightyellow;
+    text-align: center;
+}
+
+.featured-item {
+    background-color: #00000038;
 }
 
 .featured-image {
@@ -46,4 +51,15 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	grid-auto-rows: minmax(250px, auto);
+}
+
+.item-image-div {
+    text-align: center;
+    margin: 20px;
+}
+
+.item-image {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
 }
