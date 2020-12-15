@@ -52,3 +52,14 @@
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	grid-auto-rows: minmax(250px, auto);
 }
+
+.item-image-div {
+    text-align: center;
+    margin: 20px;
+}
+
+.item-image {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
