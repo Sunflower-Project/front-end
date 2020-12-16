@@ -30,8 +30,10 @@ const Items = () => {
 		Axios(url)
 			.then((data) => {
 				setItems(data.data);
+
 			})
 			.catch((error) => {});
+		//eslint-disable-next-line
 	}, []);
 
 	if (!items) {
@@ -43,7 +45,7 @@ const Items = () => {
 	let itemList = items.map((item) => {
 		return (
 			<div className='item-image-div'>
-				<Link to='/upitemdetail'>
+				<Link to={'/item/' + item.id}>
 					<h3>{item.name}</h3>
 					<img className='item-image' src={item.image} alt='' />
 				</Link>
@@ -52,6 +54,8 @@ const Items = () => {
 	});
 	const handleClose = () => setShow(false);
 	let handleShow = () => setShow(true);
+
+	//// -- Page Content -- ////
 
 	return (
 		<div>
@@ -139,7 +143,7 @@ const Items = () => {
 					</Modal>
 				</>
 			</div>
-			<div className='item-image-grid'>{itemList}</div>;
+			<div className='item-image-grid'>{itemList}</div>
 		</div>
 	);
 };
