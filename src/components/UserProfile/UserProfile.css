@@ -1,5 +1,5 @@
 .body-div {
-	/* height: 1000px; */
+	height: 2000px;
     background-color: lightblue;
 }
 
@@ -36,6 +36,7 @@
 .featured-work {
     background-color: lightyellow;
     text-align: center;
+    height: 100%;
 }
 
 .featured-item {

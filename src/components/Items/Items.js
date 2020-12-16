@@ -15,14 +15,15 @@ const Items = () => {
 
 	let [items, setItems] = useState('');
 	let [show, setShow] = useState(false);
-	// const initialState = {
-	// 	name: '',
-	// 	category: '',
-	// 	condition: '',
-	// 	description: '',
-	// 	classification: '',
-	// 	image: '',
-	// };
+	let initialState = {
+		name: '',
+		category: '',
+		condition: '',
+		description: '',
+		classification: '',
+		image: '',
+	};
+	let [newItem, setNewItem] = useState(initialState)
 
 	//// -- useEffect -- ////
 
@@ -44,21 +45,31 @@ const Items = () => {
 
 	let itemList = items.map((item) => {
 		return (
-			<div className='item-image-div'>
+			<div key={item.id} className='item-image-div'>
 				<Link to={'/item/' + item.id}>
 					<h3>{item.name}</h3>
-					<img className='item-image' src={item.image} alt='' />
+					<img className='item-image' src={item.image} alt={item.name} />
 				</Link>
 			</div>
 		);
 	});
 	const handleClose = () => setShow(false);
 	let handleShow = () => setShow(true);
+	let handleSubmit = (event) => {
+		const data = newItem
+		event.preventDefault()
+		Axios.post(url, data).then((response) => {
+			console.log(response.data.id);
+		});
+	}
+	const handleChange = (event) => {
+		setNewItem({ ...newItem, [event.target.id]: event.target.value })
+	}
 
 	//// -- Page Content -- ////
 
 	return (
-		<div>
+		<div className='item-page-div'>
 			<div>
 				<>
 					{/* Open Modal */}
@@ -66,7 +77,7 @@ const Items = () => {
 						Create Item
 					</Button>
 					{/* Begin Modal */}
-					<Modal show={show} onHide={handleClose}>
+					<Modal show={show} onHide={handleClose} centered size='lg'>
 						{/* Modal Header */}
 						<Modal.Header closeButton>
 							<Modal.Title>Create a new Item!</Modal.Title>
@@ -74,11 +85,16 @@ const Items = () => {
 						{/* Modal Body */}
 						<Modal.Body>
 							{/* Begin Form */}
-							<Form action='submit'>
+							<Form action='submit' onSubmit={handleSubmit}>
 								{/* Item name */}
 								<Form.Group>
 									<Form.Label>Item Name</Form.Label>
-									<Form.Control type='text' placeholder='e.g. Table' />
+									<Form.Control
+										type='text'
+										placeholder='e.g. Table'
+										onChange={handleChange}
+										id='name'
+									/>
 									{/* <Form.Text className='text-muted'>
 										We'll never share your email with anyone else.
 									</Form.Text> */}
@@ -86,7 +102,7 @@ const Items = () => {
 								{/* Category */}
 								<Form.Group>
 									<Form.Label>Choose a Category</Form.Label>
-									<Form.Control as='select'>
+									<Form.Control as='select' onChange={handleChange} id='category'>
 										<option>Select...</option>
 										<option>Indoor Furniture</option>
 										<option>Toys</option>
@@ -96,7 +112,7 @@ const Items = () => {
 								{/* Condition */}
 								<Form.Group>
 									<Form.Label>What Condition is it in?</Form.Label>
-									<Form.Control as='select'>
+									<Form.Control as='select' onChange={handleChange} id='condition'>
 										<option>Select...</option>
 										<option>Great</option>
 										<option>Fair</option>
@@ -106,7 +122,7 @@ const Items = () => {
 								{/* Classification */}
 								<Form.Group>
 									<Form.Label>Recycle or Upcycle?</Form.Label>
-									<Form.Control as='select'>
+									<Form.Control as='select' onChange={handleChange} id='classification'>
 										<option>Select...</option>
 										<option>Recycle</option>
 										<option>Upcycle</option>
@@ -115,19 +131,24 @@ const Items = () => {
 								{/* Item Description */}
 								<Form.Group>
 									<Form.Label>Describe your item...</Form.Label>
-									<Form.Control as='textarea' rows={3} />
+									<Form.Control
+										as='textarea'
+										rows={3}
+										onChange={handleChange}
+										id='description'
+									/>
 								</Form.Group>
 								{/* Image Upload */}
 								<Form.Group>
 									<p>and finally...</p>
 									<Form.File
-										id='custom-file'
+										id=' image'
 										label='Upload a picture of your item!'
-										custom
+										
 									/>
 								</Form.Group>
 								{/* Submit Button */}
-								<Button variant='primary' type='submit'>
+								<Button variant='primary' type='submit' onSubmit={handleSubmit}>
 									Create
 								</Button>
 							</Form>

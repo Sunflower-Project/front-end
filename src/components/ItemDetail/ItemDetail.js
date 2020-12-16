@@ -13,13 +13,16 @@ const ItemDetail = ({ match }) => {
 
 	//// -- Functions / Event Handlers -- ////
 
+	// const handleSubmit = (event) => {
+	// 	const data = 
+	// }
+
 	//// -- useEffect -- ////
 
 	useEffect(function getItemInfo() {
 		Axios(itemUrl)
 			.then((data) => {
 				setItemInfo(data.data);
-				console.log(itemInfo);
 			})
 			.catch((error) => {});
 		//eslint-disable-next-line
