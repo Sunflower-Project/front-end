@@ -1,44 +1,43 @@
 .item-info-body-div {
 	/* height: 1000px; */
-    background-color: lightblue;
+	background-color: lightblue;
 }
 
 .item-info {
-
-    display: flex;
-    background-color: lightcoral;
-    border-bottom: 4px solid black;
+	display: flex;
+	background-color: lightcoral;
+	border-bottom: 4px solid black;
 }
 
 .item-picture-div {
-    background-color: lightgreen;
-    padding: 10px;
-    flex: 1;
-    text-align: center;
+	background-color: lightgreen;
+	padding: 10px;
+	flex: 1;
+	text-align: center;
 }
 
 .item-picture {
-    border-radius: 2%;
-    border: 10px solid white;
+	border-radius: 2%;
+	border: 10px solid white;
 }
 
 .item-name {
-    background-color: lightpink;
-    text-align: center;
-    font-size: 48px;
-    padding: 5px;
+	background-color: lightpink;
+	text-align: center;
+	font-size: 48px;
+	padding: 5px;
 }
 
 .item-bio-block {
-    flex: 1;
-    background-color: lightseagreen;
-    margin: 0 auto;
+	flex: 1;
+	background-color: lightseagreen;
+	margin: 0 auto;
 }
 
 .featured-work {
-    background-color: lightyellow;
-    text-align: center;
-    height: 550px;
+	background-color: lightyellow;
+	text-align: center;
+	height: 100%;
 }
 
 /* .featured-item {
