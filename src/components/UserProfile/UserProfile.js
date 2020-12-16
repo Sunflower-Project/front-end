@@ -1,8 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Axios from 'axios'
 import { Link } from 'react-router-dom';
 import './UserProfile.css';
 
 const UserProfile = () => {
+
+	//// -- Variables -- ////
+
+	let url = 'http://localhost:8000/item/';
+
+	//// -- States -- ////
+
+	let [userItems, setUserItems] = useState('');
+
+	//// -- useEffects -- ////
+
+	useEffect(function getItems() {
+		Axios(url)
+			.then((data) => {
+				setUserItems(data.data);
+			})
+			.catch((error) => {});
+		//eslint-disable-next-line
+	}, []);
+	
+	if(!userItems){
+		return null
+	}
+
+	//// -- Functions / Event Handlers -- ////
+
+	let userItemList = userItems.map((item) => {
+		return (
+			<div className='item-image-div'>
+				<Link to={'/item/' + item.id}>
+					<h3>{item.name}</h3>
+					<img className='item-image' src={item.image} alt='' />
+				</Link>
+			</div>
+		);
+	});
+
+
+
 	return (
 		<div className='body-div'>
 			<div className='profile-info'>
@@ -30,39 +70,7 @@ const UserProfile = () => {
 			</div>
 			<div className='featured-work'>
 				<h2>Featured Work (Upcycled)</h2>
-				<div className='image-grid'>
-					<div className='featured-item'>
-						<Link to='/upitemdetail'>
-							<img
-								className='featured-image'
-								src='item-test-images/pexels-element-digital-1125136.jpg'
-								alt=''
-							/>
-                            <h4 className='item-name'>Blanket Ladder</h4>
-						</Link>
-					</div>
-					<div>
-						<img
-							className='featured-image'
-							src='item-test-images/pexels-evgenia-basyrova-5028844.jpg'
-							alt=''
-						/>
-					</div>
-					<div>
-						<img
-							className='featured-image'
-							src='item-test-images/pexels-inga-seliverstova-3603994 (1).jpg'
-							alt=''
-						/>
-					</div>
-					<div>
-						<img
-							className='featured-image'
-							src='item-test-images/pexels-julia-volk-5273075.jpg'
-							alt=''
-						/>
-					</div>
-				</div>
+				<div className='image-grid'>{userItemList}</div>
 			</div>
 		</div>
 	);

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ItemSuggestions from '../ItemSuggestions/ItemSuggestions';
 import Axios from 'axios';
 import './ItemDetail.css';
 
@@ -6,7 +7,9 @@ const ItemDetail = ({ match }) => {
 	//// -- Variables -- ////
 
 	let itemId = match.params.id;
+	// let itemType = match.params.item_type;
 	let itemUrl = `http://localhost:8000/item/${itemId}`;
+
 	//// -- States -- ////
 
 	const [itemInfo, setItemInfo] = useState('');
@@ -19,7 +22,6 @@ const ItemDetail = ({ match }) => {
 		Axios(itemUrl)
 			.then((data) => {
 				setItemInfo(data.data);
-				console.log(itemInfo);
 			})
 			.catch((error) => {});
 		//eslint-disable-next-line
@@ -38,12 +40,12 @@ const ItemDetail = ({ match }) => {
 					<h2 className='item-name'>{itemInfo.name}</h2>
 					<div>
 						<h3>{itemInfo.category}</h3>
+						<h3>{itemInfo.item_type}</h3>
 						<h3>
 							{itemInfo.classification} - {itemInfo.condition}
 						</h3>
 						<h3>Description</h3>
 						<p>{itemInfo.description}</p>
-						<div></div>
 					</div>
 				</div>
 				<div className='item-picture-div'>
@@ -55,9 +57,10 @@ const ItemDetail = ({ match }) => {
 					/>
 				</div>
 			</div>
-            <div className='featured-work'>
-                
-            </div>
+			<div className='featured-work'>
+				<h2>Upcycle Suggestions</h2>
+				<ItemSuggestions itemInfo={itemInfo} />
+			</div>
 		</div>
 	);
 };
