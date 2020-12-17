@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 import './ItemSuggestions.css';
 
 const ItemSuggestions = ({ itemInfo }) => {
@@ -34,7 +34,7 @@ const ItemSuggestions = ({ itemInfo }) => {
 			item.classification === 'Upcycle') && (itemInfo.id !== item.id)
 		) {
 			return (
-				<Link to={'/item/' + item.id}>
+				<Link to={'item/' + item.id}>
 					<div key={item.id} className='item-div'>
 						<div>
 							<h3>{item.name}</h3>

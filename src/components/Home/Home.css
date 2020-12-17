@@ -17,19 +17,20 @@ html, body, section {
   justify-content: center;
 }
 
-/* Pattern styles */
 .home-container {
   display: flex;
 }
 
 .left-half {
-  /* background-color: #ff9e2c; */
+
   color: orange;
     text-shadow: 0 2px 7px grey;
   flex: 1;
 }
 
 .right-half {
-  /* background-color: #b6701e; */
   flex: 1;
 }
+
+/* Layout learned from tutorial */
+/* https://css-tricks.com/left-and-right/ */

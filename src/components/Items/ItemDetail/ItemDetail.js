@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import ItemSuggestions from '../ItemSuggestions/ItemSuggestions';
-import FileUploader from '../Items/FileUploader';
+import FileUploader from '../FileUploader/FileUploader';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// import { Link } from 'react-router-dom';
+
 import Axios from 'axios';
 import './ItemDetail.css';
 
@@ -51,10 +51,10 @@ const ItemDetail = ({ match }) => {
 		Axios.put(itemUrl, formData, {
 			headers: { 'content-type': 'multipart/form-data' },
 		})
-		.then((response) => {
-			console.log(response);
-			console.log(formData);
-			window.location.reload();
+			.then((response) => {
+				console.log(response);
+				console.log(formData);
+				window.location.reload();
 			})
 			.catch(console.error);
 	};
@@ -86,7 +86,17 @@ const ItemDetail = ({ match }) => {
 		<div className='item-info-body-div'>
 			<div className='item-info'>
 				<div className='item-bio-block'>
-					<h2 className='item-name'>{itemInfo.name}</h2>
+					<div className='title-buttons'>
+						<h2 className='item-name'>{itemInfo.name}</h2>
+						<div className='buttons'>
+							<Button className='delete-button' onClick={handleDelete}>
+								{deleteIcon}
+							</Button>
+							<Button variant='primary' onClick={handleShow}>
+								{editIcon}
+							</Button>
+						</div>
+					</div>
 					<div>
 						<h3>{itemInfo.category}</h3>
 						<h3>{itemInfo.item_type}</h3>
@@ -104,22 +114,17 @@ const ItemDetail = ({ match }) => {
 						alt=''
 						width='250px'
 					/>
-					<span className='delete-button' onClick={handleDelete}>
-						{deleteIcon}
-					</span>
 					<div>
 						<div className='item-page-div'>
 							<div>
 								<>
 									{/* Open Modal */}
-									<Button variant='primary' onClick={handleShow}>
-										{editIcon}
-									</Button>
+
 									{/* Begin Modal */}
 									<Modal show={show} onHide={handleClose} centered size='lg'>
 										{/* Modal Header */}
 										<Modal.Header closeButton>
-											<Modal.Title>Create a new Item!</Modal.Title>
+											<Modal.Title>Update your item!</Modal.Title>
 										</Modal.Header>
 										{/* Modal Body */}
 										<Modal.Body>
@@ -161,8 +166,15 @@ const ItemDetail = ({ match }) => {
 															id='item_type'
 															name='item_type'
 															value={itemInfo.item_type}>
-															{/* {itemType} */}
 															<option>Wooden Chair</option>
+															<option>Wooden Bench</option>
+															<option>Armchair</option>
+															<option>Swingset</option>
+															<option>Toy Truck</option>
+															<option>Toy Car</option>
+															<option>Toy Wagon</option>
+															<option>Table</option>
+															<option>Ladder</option>
 														</Form.Control>
 													</Form.Group>
 												</Form.Group>
@@ -250,7 +262,7 @@ const ItemDetail = ({ match }) => {
 					</div>
 				</div>
 			</div>
-			<div className='featured-work'>
+			<div className='upcycle-div'>
 				<h2>Upcycle Suggestions</h2>
 				<ItemSuggestions itemInfo={itemInfo} />
 			</div>

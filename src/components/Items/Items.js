@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FileUploader from './FileUploader';
+import FileUploader from './FileUploader/FileUploader';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -57,16 +57,9 @@ const Items = () => {
 		);
 	});
 
-	let itemType = items.map((item) => {
-		// item.filter()
-		return <option key={item.id}>{item.item_type}</option>;
-	});
-
 	const handleClose = () => setShow(false);
 	let handleShow = () => setShow(true);
 	let handleSubmit = (event) => {
-		// const data = newItem
-		// console.log(data)
 		event.preventDefault();
 		const formData = new FormData();
 		formData.append('image', newFile, newFile.name);
@@ -145,7 +138,15 @@ const Items = () => {
 											id='item_type'
 											name='item_type'
 											value={newItem.item_type}>
-											{itemType}
+											<option>Wooden Chair</option>
+											<option>Wooden Bench</option>
+											<option>Armchair</option>
+											<option>Swingset</option>
+											<option>Toy Truck</option>
+											<option>Toy Car</option>
+											<option>Toy Wagon</option>
+											<option>Table</option>
+											<option>Ladder</option>
 										</Form.Control>
 									</Form.Group>
 								</Form.Group>
