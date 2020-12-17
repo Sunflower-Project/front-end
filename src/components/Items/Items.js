@@ -13,7 +13,6 @@ const Items = () => {
 	// let url = 'http://localhost:8000/item/';
 	let url = 'https://sunflower-be.herokuapp.com/item';
 
-
 	//// -- States -- ////
 
 	let [newFile, setNewFile] = useState(null);
@@ -71,7 +70,7 @@ const Items = () => {
 		formData.append('description', newItem.description);
 		formData.append('classification', newItem.classification);
 		formData.append('item_type', newItem.item_type);
-		console.log(formData, newFile, newItem)
+		console.log(formData, newFile, newItem);
 		Axios.post(url, formData, {
 			headers: { 'content-type': 'multipart/form-data' },
 		})
@@ -89,11 +88,11 @@ const Items = () => {
 	return (
 		<div className='item-page-div'>
 			<div>
+				<Button variant='primary' onClick={handleShow}>
+					Create Item
+				</Button>
 				<>
 					{/* Open Modal */}
-					<Button variant='primary' onClick={handleShow}>
-						Create Item
-					</Button>
 					{/* Begin Modal */}
 					<Modal show={show} onHide={handleClose} centered size='lg'>
 						{/* Modal Header */}
