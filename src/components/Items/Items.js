@@ -57,9 +57,10 @@ const Items = () => {
 	let handleShow = () => setShow(true);
 	let handleSubmit = (event) => {
 		const data = newItem
+		console.log(data)
 		event.preventDefault()
 		Axios.post(url, data).then((response) => {
-			console.log(response.data.id);
+			console.log(response);
 		});
 	}
 	const handleChange = (event) => {
@@ -94,6 +95,8 @@ const Items = () => {
 										placeholder='e.g. Table'
 										onChange={handleChange}
 										id='name'
+										name='name'
+										value={newItem.name}
 									/>
 									{/* <Form.Text className='text-muted'>
 										We'll never share your email with anyone else.
@@ -102,7 +105,10 @@ const Items = () => {
 								{/* Category */}
 								<Form.Group>
 									<Form.Label>Choose a Category</Form.Label>
-									<Form.Control as='select' onChange={handleChange} id='category'>
+									<Form.Control
+										as='select'
+										onChange={handleChange}
+										id='category'>
 										<option>Select...</option>
 										<option>Indoor Furniture</option>
 										<option>Toys</option>
@@ -112,7 +118,12 @@ const Items = () => {
 								{/* Condition */}
 								<Form.Group>
 									<Form.Label>What Condition is it in?</Form.Label>
-									<Form.Control as='select' onChange={handleChange} id='condition'>
+									<Form.Control
+										as='select'
+										onChange={handleChange}
+										id='condition'
+										name='condition'
+										value={newItem.condition}>
 										<option>Select...</option>
 										<option>Great</option>
 										<option>Fair</option>
@@ -122,7 +133,12 @@ const Items = () => {
 								{/* Classification */}
 								<Form.Group>
 									<Form.Label>Recycle or Upcycle?</Form.Label>
-									<Form.Control as='select' onChange={handleChange} id='classification'>
+									<Form.Control
+										as='select'
+										onChange={handleChange}
+										id='classification'
+										name='classification'
+										value={newItem.classification}>
 										<option>Select...</option>
 										<option>Recycle</option>
 										<option>Upcycle</option>
@@ -136,6 +152,8 @@ const Items = () => {
 										rows={3}
 										onChange={handleChange}
 										id='description'
+										name='description'
+										value={newItem.description}
 									/>
 								</Form.Group>
 								{/* Image Upload */}
@@ -144,11 +162,10 @@ const Items = () => {
 									<Form.File
 										id=' image'
 										label='Upload a picture of your item!'
-										
 									/>
 								</Form.Group>
 								{/* Submit Button */}
-								<Button variant='primary' type='submit' onSubmit={handleSubmit}>
+								<Button variant='primary' type='submit'>
 									Create
 								</Button>
 							</Form>
