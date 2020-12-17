@@ -10,7 +10,9 @@ import './Items.css';
 const Items = () => {
 	//// -- Variables -- ////
 
-	let url = 'http://localhost:8000/item/';
+	// let url = 'http://localhost:8000/item/';
+	let url = 'http://sunflower-be/item/';
+
 
 	//// -- States -- ////
 
