@@ -4,7 +4,7 @@ import './Home.css'
 
 const Home = () => {
     return (
-        <body className='home-body'>
+        <div className='home-body'>
 			<section className='home-container'>
 				<div className='left-half'>
 					<article>
@@ -20,7 +20,7 @@ const Home = () => {
 					</article>
 				</div>
 			</section>
-        </body>
+        </div>
 		);
 };
 
