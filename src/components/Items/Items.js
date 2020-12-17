@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import FileUploader from './FileUploader/FileUploader';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -13,6 +14,7 @@ const Items = () => {
 
 	//// -- States -- ////
 
+	let [newFile, setNewFile] = useState(null);
 	let [items, setItems] = useState('');
 	let [show, setShow] = useState(false);
 	let initialState = {
@@ -24,7 +26,7 @@ const Items = () => {
 		classification: '',
 		image: '',
 	};
-	let [newItem, setNewItem] = useState(initialState)
+	let [newItem, setNewItem] = useState(initialState);
 
 	//// -- useEffect -- ////
 
@@ -32,7 +34,7 @@ const Items = () => {
 		Axios(url)
 			.then((data) => {
 				setItems(data.data);
-				console.log(data)
+				// console.log(data);
 			})
 			.catch((error) => {});
 		//eslint-disable-next-line
@@ -55,26 +57,30 @@ const Items = () => {
 		);
 	});
 
-	let itemType = items.map((item) => {
-		// item.filter()
-		return (
-			<option key={item.id}>{item.item_type}</option>
-		);
-	});
-
 	const handleClose = () => setShow(false);
 	let handleShow = () => setShow(true);
 	let handleSubmit = (event) => {
-		const data = newItem
-		console.log(data)
-		event.preventDefault()
-		Axios.post(url, data).then((response) => {
-			console.log(response);
-		});
-	}
+		event.preventDefault();
+		const formData = new FormData();
+		formData.append('image', newFile, newFile.name);
+		formData.append('name', newItem.name);
+		formData.append('category', newItem.category);
+		formData.append('condition', newItem.condition);
+		formData.append('description', newItem.description);
+		formData.append('classification', newItem.classification);
+		formData.append('item_type', newItem.item_type);
+		console.log(formData, newFile, newItem)
+		Axios.post(url, formData, {
+			headers: { 'content-type': 'multipart/form-data' },
+		})
+			.then((response) => {
+				console.log(response);
+			})
+			.catch(console.error);
+	};
 	const handleChange = (event) => {
-		setNewItem({ ...newItem, [event.target.id]: event.target.value })
-	}
+		setNewItem({ ...newItem, [event.target.id]: event.target.value });
+	};
 
 	//// -- Page Content -- ////
 
@@ -132,8 +138,15 @@ const Items = () => {
 											id='item_type'
 											name='item_type'
 											value={newItem.item_type}>
-											{itemType}
-										
+											<option>Wooden Chair</option>
+											<option>Wooden Bench</option>
+											<option>Armchair</option>
+											<option>Swingset</option>
+											<option>Toy Truck</option>
+											<option>Toy Car</option>
+											<option>Toy Wagon</option>
+											<option>Table</option>
+											<option>Ladder</option>
 										</Form.Control>
 									</Form.Group>
 								</Form.Group>
@@ -181,12 +194,16 @@ const Items = () => {
 								{/* Image Upload */}
 								<Form.Group>
 									<p>and finally...</p>
-									<Form.File
+									{/* <Form.File
 										id='image'
 										label='Upload a picture of your item!'
-										onChange={handleChange}
+										onChange={e => setNewFile(e.target.files[0])}
 										name='image'
-										
+										value={newFile}
+									/> */}
+									<FileUploader
+										onFileSelectSuccess={(file) => setNewFile(file)}
+										// onFileSelectError={({ error }) => alert(error)}
 									/>
 								</Form.Group>
 								{/* Submit Button */}
