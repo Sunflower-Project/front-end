@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 const FileUploader = ({ onFileSelectError, onFileSelectSuccess }) => {
-	const fileInput = useRef(null);
+	// const fileInput = useRef(null);
 	const handleFileInput = (e) => {
 		// handle validations
 		// onFileSelect(e.target.files[0])
