@@ -11,7 +11,7 @@ const Items = () => {
 	//// -- Variables -- ////
 
 	// let url = 'http://localhost:8000/item/';
-	let url = 'http://sunflower-be/item/';
+	let url = 'https://sunflower-be.herokuapp.com/item';
 
 
 	//// -- States -- ////
