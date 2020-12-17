@@ -1,0 +1,53 @@
+.item-info-body-div {
+	height: 100%;
+	border-top: 4px solid black;
+}
+
+.item-info {
+	display: flex;
+	background-color: #ff8800cc;
+	border-bottom: 4px solid black;
+}
+
+.item-picture-div {
+	padding: 10px;
+	flex: 1;
+	text-align: center;
+	border-left: 4px solid black;
+}
+
+.item-picture {
+	min-width: 400px;
+	border-radius: 5%;
+	border: 10px solid black;
+}
+
+.title-buttons {
+	border-bottom: 4px solid black;
+}
+
+.buttons {
+	width: 150px;
+	display: flex;
+	justify-content: space-around;
+	padding: 10px;
+	margin: 0 auto;
+}
+
+.item-name {
+	text-align: center;
+	font-size: 48px;
+	padding: 5px;
+}
+
+.item-bio-block {
+	flex: 1;
+	background-color: white;
+	margin: 0 auto;
+}
+
+.upcycle-div {
+	background-color: lightyellow;
+	text-align: center;
+	min-height: 500px;
+}
