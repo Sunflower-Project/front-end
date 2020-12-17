@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ItemSuggestions from '../ItemSuggestions/ItemSuggestions';
+import { Redirect } from 'react-router-dom'
 import Axios from 'axios';
 import './ItemDetail.css';
 
@@ -13,8 +14,25 @@ const ItemDetail = ({ match }) => {
 	//// -- States -- ////
 
 	const [itemInfo, setItemInfo] = useState('');
+	let [show, setShow] = useState(false);
 
 	//// -- Functions / Event Handlers -- ////
+
+	let handleDelete = () => {
+		Axios.delete(itemUrl)
+			.then((data) => {
+				setItemInfo(data.data);
+			})
+			.catch((error) => {});
+	};
+
+	// let handleUpdate = () => {
+	// 	Axios.put(itemUrl)
+	// 		.then((data) => {
+	// 			setItemInfo(data.data);
+	// 		})
+	// 		.catch((error) => {});
+	// };
 
 	//// -- useEffect -- ////
 
@@ -55,6 +73,8 @@ const ItemDetail = ({ match }) => {
 						alt=''
 						width='250px'
 					/>
+					<p onClick={handleDelete}>Delete</p>
+					<p>Edit</p>
 				</div>
 			</div>
 			<div className='featured-work'>
