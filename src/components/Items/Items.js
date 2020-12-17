@@ -18,6 +18,7 @@ const Items = () => {
 	let initialState = {
 		name: '',
 		category: '',
+		item_type: '',
 		condition: '',
 		description: '',
 		classification: '',
@@ -31,7 +32,7 @@ const Items = () => {
 		Axios(url)
 			.then((data) => {
 				setItems(data.data);
-
+				console.log(data)
 			})
 			.catch((error) => {});
 		//eslint-disable-next-line
@@ -53,6 +54,14 @@ const Items = () => {
 			</div>
 		);
 	});
+
+	let itemType = items.map((item) => {
+		// item.filter()
+		return (
+			<option key={item.id}>{item.item_type}</option>
+		);
+	});
+
 	const handleClose = () => setShow(false);
 	let handleShow = () => setShow(true);
 	let handleSubmit = (event) => {
@@ -114,6 +123,19 @@ const Items = () => {
 										<option>Toys</option>
 										<option>Outdoor Furniture</option>
 									</Form.Control>
+									{/* Item Type */}
+									<Form.Group>
+										<Form.Label>What type of item is it?</Form.Label>
+										<Form.Control
+											as='select'
+											onChange={handleChange}
+											id='item_type'
+											name='item_type'
+											value={newItem.item_type}>
+											{itemType}
+										
+										</Form.Control>
+									</Form.Group>
 								</Form.Group>
 								{/* Condition */}
 								<Form.Group>
@@ -160,8 +182,11 @@ const Items = () => {
 								<Form.Group>
 									<p>and finally...</p>
 									<Form.File
-										id=' image'
+										id='image'
 										label='Upload a picture of your item!'
+										onChange={handleChange}
+										name='image'
+										
 									/>
 								</Form.Group>
 								{/* Submit Button */}
