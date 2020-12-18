@@ -63,7 +63,7 @@ const Items = () => {
 	let handleSubmit = (event) => {
 		event.preventDefault();
 		const formData = new FormData();
-		formData.append('image', newFile, newFile.name);
+		formData.append('image', newItem.name);
 		formData.append('name', newItem.name);
 		formData.append('category', newItem.category);
 		formData.append('condition', newItem.condition);
