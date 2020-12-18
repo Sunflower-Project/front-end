@@ -50,11 +50,7 @@ const Items = () => {
 			<div key={item.id} className='item-image-div'>
 				<Link to={'/item/' + item.id}>
 					<h3>{item.name}</h3>
-					<img
-						className='item-image'
-						src={item.image}
-						alt={item.name}
-					/>
+					<img className='item-image' src={item.image} alt={item.name} />
 				</Link>
 			</div>
 		);
@@ -64,28 +60,12 @@ const Items = () => {
 	let handleShow = () => setShow(true);
 	let handleSubmit = (event) => {
 		event.preventDefault();
-		Axios.post(url, newItem)
-			.then((data) => {
-				setNewItem(data);
-				window.location.reload();
-				console.log(newItem);
-		const formData = new FormData();
-		formData.append('image', newItem.image);
-		formData.append('name', newItem.name);
-		formData.append('category', newItem.category);
-		formData.append('condition', newItem.condition);
-		formData.append('description', newItem.description);
-		formData.append('classification', newItem.classification);
-		formData.append('item_type', newItem.item_type);
-		console.log(formData, newFile, newItem);
-		Axios.post(url, formData, {
-			headers: { 'content-type': 'multipart/form-data' },
-		})
-			.then((response) => {
-				console.log(response);
-			})
-			.catch(console.error);
+		Axios.post(url, newItem).then((data) => {
+			setNewItem(data);
+			window.location.reload().catch(console.error);
+		});
 	};
+
 	const handleChange = (event) => {
 		setNewItem({ ...newItem, [event.target.id]: event.target.value });
 	};
