@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import ItemSuggestions from '../ItemSuggestions/ItemSuggestions';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 import Axios from 'axios';
 import './ItemDetail.css';
@@ -36,9 +36,7 @@ const ItemDetail = ({ match }) => {
 	let handleClose = () => setShow(false);
 	let handleSubmit = (event) => {
 		Axios.put(itemUrl, itemInfo)
-			.then((response) => {
-				console.log(response);
-			})
+			.then((response) => {})
 			.catch(console.error);
 	};
 	const handleChange = (event) => {

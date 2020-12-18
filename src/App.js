@@ -2,11 +2,7 @@ import React from 'react';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Items from './components/Items/Items';
-
-
 import Footer from './components/Footer/Footer';
-
-
 import ItemDetail from './components/Items/ItemDetail/ItemDetail';
 import { Route } from 'react-router-dom';
 import './App.css';

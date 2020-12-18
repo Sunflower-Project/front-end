@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 import './Items.css';
 
 const Items = () => {
@@ -33,7 +33,6 @@ const Items = () => {
 		Axios(url)
 			.then((data) => {
 				setItems(data.data);
-				// console.log(data);
 			})
 			.catch((error) => {});
 		//eslint-disable-next-line

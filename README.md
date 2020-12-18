@@ -1,71 +1,80 @@
-# Getting Started with Create React App
+# Sunflower 
+https://github.com/Sunflower-Project
+## Description
+Sunflower is an up-cycling application built with the goal of fostering a community of individuals to reuse and create works of art out of discarded items, or at the very least find new ways to upgrade their existing ones.
+- e.g. Taking a faded and worn down table and finding someone else who stained and cleaned up a table similar to yours, making it like-new again.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Brief Example 
+Here is an example of a "recycle" item. You can see it is in poor condition and below is a suggested item to model its "upcycle" after.
 
-## Available Scripts
+![Recycle Example](readme-pics/nastybench.png)
 
-In the project directory, you can run:
+## List of Features / User Stories
+Bronze (MVP) - **Completed**
+- Display a welcome page
+- Display all items
+- Able to post items
+- Able to update items
+- Able to delete items
+- Able to see suggested items
+- Suggested items link to their own pages
 
-### `npm start`
+### Stretch Goals
+Silver - *Incomplete*
+- User Authentication
+- File upload instead of just URLs
+- Create your own profile
+- Save items to your profile
+- Add a search function
+- Add a sort function for browsing items
+- Separate between recycle and upcycle pages
+- Add a comment feature
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Gold - *Incomplete*
+- Sign in with Google, Facebook, etc.
+- Share links for your items to social media.
+- Add direct messaging between users
 
-### `npm test`
+### Technologies used
+- HTML
+- CSS
+- Javascript
+- React.js
+- Bootstrap
+- FontAwesome Icons
+- Python
+- PostgreSQL
+- Django Rest Framework
+- Heroku
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation Instructions / Getting Started
+To get started on this project:
+- Fork and clone this repo, as well as the backend repo https://github.com/Sunflower-Project/back-end
+- Install dependencies for both repos
+- Ensure you are operating on the correct localhosts (3000 for the front-end, and 8000 for the back-end)
 
-### `npm run build`
+### Contribution Guidelines
+- If you'd like to contribute, submit a pull request from your own feature branch and compare to ``` dev ```.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
+Organization Repo
+- https://github.com/Sunflower-Project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Front-End Repo
+- https://github.com/Sunflower-Project/front-end
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Front-End Issue Tracker
+- https://github.com/Sunflower-Project/front-end/issues
 
-### `npm run eject`
+Front-End Pull Requests
+- https://github.com/Sunflower-Project/front-end/pulls
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Back-End Repo
+- https://github.com/Sunflower-Project/back-end
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Back-End Issue Tracker
+- https://github.com/Sunflower-Project/back-end/issues
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# front-end
+Back-End Pull Requests
+- https://github.com/Sunflower-Project/back-end/pulls

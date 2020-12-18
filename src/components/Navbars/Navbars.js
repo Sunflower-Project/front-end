@@ -8,7 +8,6 @@ const Navbars = () => {
 			<div>
 				<Navbar bg='light' expand='lg'>
 					<Navbar.Brand href='#home'>
-
                         {/* React-Bootstrap */}
                         </Navbar.Brand>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
