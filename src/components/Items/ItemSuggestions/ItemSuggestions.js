@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ItemSuggestions.css';
 
 const ItemSuggestions = ({ itemInfo }) => {
 	//// -- Variables -- ////
 
-	let url = `http://localhost:8000/item`;
+	// let url = `http://localhost:8000/item`;
+	let url = `https://sunflower-back-end.herokuapp.com/item/`;
 
 	//// -- States -- ////
 

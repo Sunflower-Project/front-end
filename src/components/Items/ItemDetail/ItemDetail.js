@@ -16,7 +16,8 @@ const ItemDetail = ({ match }) => {
 	let itemId = match.params.id;
 	const deleteIcon = <FontAwesomeIcon icon={faTrashAlt} />;
 	const editIcon = <FontAwesomeIcon icon={faEdit} />;
-	let itemUrl = `http://localhost:8000/item/${itemId}/`;
+	// let itemUrl = `http://localhost:8000/item/${itemId}/`;
+	let itemUrl = `https://sunflower-back-end.herokuapp.com/item/${itemId}/`;
 
 	//// -- States -- ////
 

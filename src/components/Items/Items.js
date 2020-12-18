@@ -9,8 +9,8 @@ import './Items.css';
 const Items = () => {
 	//// -- Variables -- ////
 
-	let url = 'http://localhost:8000/item/';
-	// let url = 'https://sunflower-back-end.herokuapp.com/item/';
+	// let url = 'http://localhost:8000/item/';
+	let url = 'https://sunflower-back-end.herokuapp.com/item/';
 
 	//// -- States -- ////
 
@@ -107,8 +107,7 @@ const Items = () => {
 									<Form.Control
 										as='select'
 										onChange={handleChange}
-										id='category'
-										value='category'>
+										id='category'>
 										<option>Select...</option>
 										<option>Indoor Furniture</option>
 										<option>Toys</option>
