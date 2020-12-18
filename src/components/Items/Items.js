@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import FileUploader from './FileUploader/FileUploader';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -10,12 +9,11 @@ import './Items.css';
 const Items = () => {
 	//// -- Variables -- ////
 
-	// let url = 'http://localhost:8000/item/';
-	let url = 'https://sunflower-back-end.herokuapp.com/item/';
+	let url = 'http://localhost:8000/item/';
+	// let url = 'https://sunflower-back-end.herokuapp.com/item/';
 
 	//// -- States -- ////
 
-	let [newFile, setNewFile] = useState(null);
 	let [items, setItems] = useState('');
 	let [show, setShow] = useState(false);
 	let initialState = {
@@ -52,7 +50,11 @@ const Items = () => {
 			<div key={item.id} className='item-image-div'>
 				<Link to={'/item/' + item.id}>
 					<h3>{item.name}</h3>
-					<img className='item-image' src={item.image} alt={item.name} />
+					<img
+						className='item-image'
+						src={item.image}
+						alt={item.name}
+					/>
 				</Link>
 			</div>
 		);
@@ -62,20 +64,11 @@ const Items = () => {
 	let handleShow = () => setShow(true);
 	let handleSubmit = (event) => {
 		event.preventDefault();
-		const formData = new FormData();
-		formData.append('image', newItem.name);
-		formData.append('name', newItem.name);
-		formData.append('category', newItem.category);
-		formData.append('condition', newItem.condition);
-		formData.append('description', newItem.description);
-		formData.append('classification', newItem.classification);
-		formData.append('item_type', newItem.item_type);
-		console.log(formData, newFile, newItem);
-		Axios.post(url, formData, {
-			headers: { 'content-type': 'multipart/form-data' },
-		})
-			.then((response) => {
-				console.log(response);
+		Axios.post(url, newItem)
+			.then((data) => {
+				setNewItem(data);
+				window.location.reload();
+				console.log(newItem);
 			})
 			.catch(console.error);
 	};
@@ -112,11 +105,7 @@ const Items = () => {
 										onChange={handleChange}
 										id='name'
 										name='name'
-										value={newItem.name}
 									/>
-									{/* <Form.Text className='text-muted'>
-										We'll never share your email with anyone else.
-									</Form.Text> */}
 								</Form.Group>
 								{/* Category */}
 								<Form.Group>
@@ -124,7 +113,8 @@ const Items = () => {
 									<Form.Control
 										as='select'
 										onChange={handleChange}
-										id='category'>
+										id='category'
+										value='category'>
 										<option>Select...</option>
 										<option>Indoor Furniture</option>
 										<option>Toys</option>
@@ -137,8 +127,7 @@ const Items = () => {
 											as='select'
 											onChange={handleChange}
 											id='item_type'
-											name='item_type'
-											value={newItem.item_type}>
+											name='item_type'>
 											<option>Wooden Chair</option>
 											<option>Wooden Bench</option>
 											<option>Armchair</option>
@@ -158,8 +147,7 @@ const Items = () => {
 										as='select'
 										onChange={handleChange}
 										id='condition'
-										name='condition'
-										value={newItem.condition}>
+										name='condition'>
 										<option>Select...</option>
 										<option>Great</option>
 										<option>Fair</option>
@@ -173,8 +161,7 @@ const Items = () => {
 										as='select'
 										onChange={handleChange}
 										id='classification'
-										name='classification'
-										value={newItem.classification}>
+										name='classification'>
 										<option>Select...</option>
 										<option>Recycle</option>
 										<option>Upcycle</option>
@@ -189,22 +176,17 @@ const Items = () => {
 										onChange={handleChange}
 										id='description'
 										name='description'
-										value={newItem.description}
 									/>
 								</Form.Group>
 								{/* Image Upload */}
 								<Form.Group>
-									<p>and finally...</p>
-									{/* <Form.File
+									<Form.Label>Image URL</Form.Label>
+									<Form.Control
+										type='text'
+										placeholder='e.g. https://i.imgur.com/image.png'
+										onChange={handleChange}
 										id='image'
-										label='Upload a picture of your item!'
-										onChange={e => setNewFile(e.target.files[0])}
 										name='image'
-										value={newFile}
-									/> */}
-									<FileUploader
-										onFileSelectSuccess={(file) => setNewFile(file)}
-										// onFileSelectError={({ error }) => alert(error)}
 									/>
 								</Form.Group>
 								{/* Submit Button */}
@@ -213,14 +195,6 @@ const Items = () => {
 								</Button>
 							</Form>
 						</Modal.Body>
-						<Modal.Footer>
-							<Button variant='secondary' onClick={handleClose}>
-								Close
-							</Button>
-							<Button variant='primary' onClick={handleClose}>
-								Save Changes
-							</Button>
-						</Modal.Footer>
 					</Modal>
 				</>
 			</div>

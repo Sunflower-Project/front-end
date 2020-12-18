@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import ItemSuggestions from '../ItemSuggestions/ItemSuggestions';
-import FileUploader from '../FileUploader/FileUploader';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -17,15 +16,12 @@ const ItemDetail = ({ match }) => {
 	let itemId = match.params.id;
 	const deleteIcon = <FontAwesomeIcon icon={faTrashAlt} />;
 	const editIcon = <FontAwesomeIcon icon={faEdit} />;
-	// let itemType = match.params.item_type;
 	let itemUrl = `http://localhost:8000/item/${itemId}/`;
 
 	//// -- States -- ////
 
-	let [newFile, setNewFile] = useState(null);
 	const [itemInfo, setItemInfo] = useState('');
 	let [show, setShow] = useState(false);
-	// let [items, setItems] = useState('');
 
 	//// -- Functions / Event Handlers -- ////
 	let handleDelete = () => {
@@ -38,32 +34,15 @@ const ItemDetail = ({ match }) => {
 	let handleShow = () => setShow(true);
 	let handleClose = () => setShow(false);
 	let handleSubmit = (event) => {
-		// const data = newItem
-		const formData = new FormData();
-		formData.append('image', newFile, newFile.name);
-		formData.append('name', itemInfo.name);
-		formData.append('category', itemInfo.category);
-		formData.append('condition', itemInfo.condition);
-		formData.append('description', itemInfo.description);
-		formData.append('classification', itemInfo.classification);
-		formData.append('item_type', itemInfo.item_type);
-		console.log(formData, itemInfo);
-		Axios.put(itemUrl, formData, {
-			headers: { 'content-type': 'multipart/form-data' },
-		})
+		Axios.put(itemUrl, itemInfo)
 			.then((response) => {
 				console.log(response);
-				console.log(formData);
-				window.location.reload();
 			})
 			.catch(console.error);
 	};
 	const handleChange = (event) => {
 		setItemInfo({ ...itemInfo, [event.target.id]: event.target.value });
 	};
-	// let itemType = itemInfo.map((item) => {
-	// 	return <option key={item.id}>{item.item_type}</option>;
-	// });
 
 	//// -- useEffect -- ////
 
@@ -115,7 +94,7 @@ const ItemDetail = ({ match }) => {
 						width='250px'
 					/>
 					<div>
-						<div className='item-page-div'>
+						<div>
 							<div>
 								<>
 									{/* Open Modal */}
@@ -141,9 +120,6 @@ const ItemDetail = ({ match }) => {
 														name='name'
 														value={itemInfo.name}
 													/>
-													{/* <Form.Text className='text-muted'>
-										We'll never share your email with anyone else.
-									</Form.Text> */}
 												</Form.Group>
 												{/* Category */}
 												<Form.Group>
@@ -222,22 +198,15 @@ const ItemDetail = ({ match }) => {
 												{/* Image Upload */}
 												<Form.Group>
 													<p>and finally...</p>
-													{/* <Form.File
+													<Form.Label>Image URL</Form.Label>
+													<Form.Control
+														type='text'
+														placeholder='e.g. https://i.imgur.com/image.png'
+														onChange={handleChange}
 														id='image'
-														label='Upload a picture of your item!'
-														onChange={(e) => setNewFile(e.target.files[0])}
 														name='image'
-														value={newFile}
-													/> */}
-													<FileUploader
-														onFileSelectSuccess={(file) => setNewFile(file)}
-														// onFileSelectError={({ error }) => alert(error)}
 													/>
 												</Form.Group>
-												{/* Submit Button */}
-												{/* <Button variant='primary' type='submit'>
-													Create
-												</Button> */}
 											</Form>
 										</Modal.Body>
 										<Modal.Footer>
@@ -257,14 +226,13 @@ const ItemDetail = ({ match }) => {
 									</Modal>
 								</>
 							</div>
-							<div className='item-image-grid'>{/* {itemList} */}</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div className='upcycle-div'>
 				<h2>Upcycle Suggestions</h2>
-				<ItemSuggestions itemInfo={itemInfo} />
+				<ItemSuggestions itemInfo={itemInfo}/>
 			</div>
 		</div>
 	);
