@@ -69,6 +69,20 @@ const Items = () => {
 				setNewItem(data);
 				window.location.reload();
 				console.log(newItem);
+		const formData = new FormData();
+		formData.append('image', newItem.image);
+		formData.append('name', newItem.name);
+		formData.append('category', newItem.category);
+		formData.append('condition', newItem.condition);
+		formData.append('description', newItem.description);
+		formData.append('classification', newItem.classification);
+		formData.append('item_type', newItem.item_type);
+		console.log(formData, newFile, newItem);
+		Axios.post(url, formData, {
+			headers: { 'content-type': 'multipart/form-data' },
+		})
+			.then((response) => {
+				console.log(response);
 			})
 			.catch(console.error);
 	};
